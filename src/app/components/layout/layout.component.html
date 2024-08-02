@@ -1,0 +1,65 @@
+<section class="py-[2rem]">
+    <div class="lg:mx-auto mx-[1.5rem] max-w-5xl">
+      <button
+        routerLink="/add"
+        class="
+          bg-indigo-500
+          hover:bg-indigo-600
+          p-3
+          rounded-xl
+          text-white
+          font-bold
+          mb-5
+        "
+      >
+        Add User
+      </button>
+      &nbsp;
+      &nbsp;
+      <button
+      routerLink="/other"
+      class="
+        bg-indigo-500
+        hover:bg-indigo-600
+        p-3
+        rounded-xl
+        text-white
+        font-bold
+        mb-5
+      "
+    >
+      Next Section
+    </button>
+
+    <button (click)="getUsers()">Get Users</button>
+  
+      <div class="grid md:grid-cols-2 gap-5">
+        <div
+          *ngFor="let user of usersDatas$ | async"
+          class="shadow-xl p-3 flex justify-between"
+        >
+          <div>
+            <h1 class="font-bold">{{ user.name }}</h1>
+            <p>{{ user.username }}</p>
+          </div>
+          <div class="flex gap-x-3">
+            <button
+              [routerLink]="['update', user.id]"
+              class="bg-teal-500 p-3 hover:bg-teal-600"
+            >
+              Edit
+            </button>
+            <button
+              (click)="handleDelete(user.id)"
+              class="bg-red-500 p-3 hover:bg-red-600"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  
